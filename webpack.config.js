@@ -1,10 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-const htmlPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
-});
-
 module.exports = {
   module: {
     rules: [
@@ -29,10 +24,17 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {},
-          },
-        ],
-      },
+          }
+        ]
+      }
     ]
   },
-  plugins: [htmlPlugin]
+  plugins: [
+    new HtmlWebPackPlugin({
+      hash: true,
+      title: 'Simple Web App Boilerplate',
+      template: './src/index.html',
+      filename: './index.html'
+    })
+  ]
 };
